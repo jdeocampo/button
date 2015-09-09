@@ -1,0 +1,91 @@
+/* || Mixins */
+
+.border-radius (@radius: 4px) {
+
+	-webkit-border-radius: @radius;
+	   -moz-border-radius: @radius;
+					border-radius: @radius;
+
+	-webkit-background-clip: padding-box;
+	   -moz-background-clip: padding;
+					background-clip: padding-box;
+}
+
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-top-right-radius:    @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius:  @bottomleft;
+	-webkit-border-top-left-radius:     @topleft;
+
+	-moz-border-radius-topright:        @topright;
+	-moz-border-radius-bottomright:     @bottomright;
+	-moz-border-radius-bottomleft:      @bottomleft;
+	-moz-border-radius-topleft:         @topleft;
+
+	border-top-right-radius:            @topright;
+	border-top-left-radius:             @topleft;
+	border-bottom-right-radius:         @bottomright;
+	border-bottom-left-radius:          @bottomleft;
+	 
+	-webkit-background-clip: padding-box; 
+	   -moz-background-clip: padding;
+	   			background-clip: padding-box; 
+	
+}
+
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: 2em;
+  .border-radius(@border-radius);
+}
+
+.button-borders (@color, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+	border-top-width: @top;
+	border-bottom-width: @bottom;
+	border-right-width: @right;
+	border-left-width: @left;
+	border-color: @color;
+}
+
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:focus,
+  &.focus {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 20%);
+  }
+  &:hover {
+    color: @color;
+    background-color: darken(@background, 20%);
+        border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+
+    &:hover,
+    &:focus {
+      color: @color;
+      background-color: darken(@background, 17%);
+          border-color: darken(@border, 25%);
+    }
+  }
+  &:active {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled] {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+}
